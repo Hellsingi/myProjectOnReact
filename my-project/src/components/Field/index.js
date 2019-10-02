@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 
 const myInput = (props) => {
     const { input, type, placeholder, meta } = props;
