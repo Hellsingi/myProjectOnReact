@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import myInput from "../common/Field/myInput";
-import { requiredInput } from "../../Validation/validation";
+// import { Field, reduxForm } from "redux-form";
+// import myInput from "../common/Field/myInput";
+// import { requiredInput } from "../../Validation/validation";
 import "./loginForm.scss";
+
+import { fetchData } from "../../actions";
+import { connect } from 'react-redux';
 
 class LoginForm extends Component {
   //   submit = values => {
@@ -10,13 +13,17 @@ class LoginForm extends Component {
   //     alert(JSON.stringify(values));
   //   };
 
+  componentDidMount() {
+    console.log(this.props.dispatch(fetchData()));
+  }
+
   render() {
     const { handleSubmit, reset } = this.props;
 
     return (
       <>
         <form onSubmit={handleSubmit} className="formLogin">
-          <Field
+          {/* <Field
             name="username"
             component={myInput}
             type="text"
@@ -30,7 +37,7 @@ class LoginForm extends Component {
             type="password"
             placeholder="Password"
             validate={requiredInput}
-          />
+          /> */}
           <div>
             <button type="button" onClick={reset}>
               Clean form
@@ -50,9 +57,9 @@ class LoginForm extends Component {
 //   alert(JSON.stringify(values));
 // };
 
-LoginForm = reduxForm({
-  form: "login"
-  //   onSubmit
-})(LoginForm);
+// LoginForm = reduxForm({
+//   form: "login"
+//   //   onSubmit
+// })(LoginForm);
 
-export default LoginForm;
+export default connect()(LoginForm);

@@ -1,4 +1,4 @@
-import { LOGIN_REQUESTED, LOGOUT } from "../constants/actionTypes";
+import { LOGIN_REQUESTED, LOGOUT, FETCH_DATA } from "../constants/actionTypes";
 
 
 export const login = data => {
@@ -7,6 +7,12 @@ export const login = data => {
     payload: data
   };
 };
+
+export const fetchData = () => {
+  return {
+    type: FETCH_DATA,
+  }
+}
 
 export const logOut = () => {
   return {
